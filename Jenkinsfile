@@ -24,8 +24,8 @@ pipeline {
       steps {
         withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
          sh 'printenv'
-         sh 'docker build -t lyongadean/numeric-app-nl:""$GIT_COMMIT"" .'
-         sh 'docker push lyongadean/numeric-app-nl:""$GIT_COMMIT""'
+         sh 'docker build -t nlyonga/numeric-app-nl:""$GIT_COMMIT"" .'
+         sh 'docker push nlyonga/numeric-app-nl:""$GIT_COMMIT""'
        }
       }
     }

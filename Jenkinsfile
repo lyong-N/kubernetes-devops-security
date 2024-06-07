@@ -2,6 +2,7 @@ pipeline {
   agent any
 
   stages {
+
     stage('Build Artifact - Maven') {
       steps {
         sh "mvn clean package -DskipTests=true"
@@ -20,13 +21,14 @@ pipeline {
         }
       }
     }
+
     stage('Docker Build and Push') {
       steps {
         withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
-         sh 'printenv'
-         sh 'docker build -t nlyonga/numeric-app-nl:""$GIT_COMMIT"" .'
-         sh 'docker push nlyonga/numeric-app-nl:""$GIT_COMMIT""'
-       }
+          sh 'printenv'
+          sh 'docker build -t nlyonga/numeric-app:""$GIT_COMMIT"" .'
+          sh 'docker push nlyonga/numeric-app:""$GIT_COMMIT""'
+        }
       }
     }
   }

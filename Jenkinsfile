@@ -23,10 +23,10 @@ pipeline {
     stage('Docker Build and Push') {
       steps {
         withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
-        sh 'printenv'
-        sh 'docker build -t lyongadean/numeric-app:""$GIT_COMMIT"" .'
-        sh 'docker push lyongadean/numeric-app:""$GIT_COMMIT""'
-      }
+         sh 'printenv'
+         sh 'docker build -t nlyonga/numeric-app:""$GIT_COMMIT"" .'
+         sh 'docker push nlyonga/numeric-app:""$GIT_COMMIT""'
+       }
       }
     }
   }
